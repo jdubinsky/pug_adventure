@@ -1,8 +1,8 @@
 import pygame
 
 from Level import Level
-from components.Platform import Platform
-from player.Enemy import Enemy
+from components import Platform
+from player import Enemy
 
 class Level_02(Level):
     """ Definition for level 2. """

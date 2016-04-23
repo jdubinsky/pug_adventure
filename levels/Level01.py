@@ -2,8 +2,8 @@ import pygame
 import random
 
 from Level import Level
-from components.Platform import Platform
-from player.Enemy import Enemy
+from components import Platform
+from player import Enemy
 
 from constants.colors import (
     BLACK,

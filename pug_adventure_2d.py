@@ -1,15 +1,21 @@
 import pygame
 import random
 
-from components.Bullet import Bullet
-from components.HealthBar import HealthBar
-from components.Platform import Platform
+from components import (
+    Bullet,
+    HealthBar,
+    Platform
+)
 
-from levels.Level01 import Level_01
-from levels.Level02 import Level_02
+from levels import (
+    Level_01,
+    Level_02,
+)
 
-from player.Player import Player
-from player.Enemy import Enemy
+from player import (
+    Enemy,
+    Player
+)
 
 from constants.colors import (
     BLACK,
