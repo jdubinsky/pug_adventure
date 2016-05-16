@@ -17,41 +17,42 @@ from constants.screen_dimensions import (
     SCREEN_HEIGHT
 )
 
+
 class Level_01(Level):
     """ Definition for level 1. """
 
     _INTRO_TEXT = [
-        'hello',
-	'test'
+        "Something about this park seems off...",
+        "Flying tomatoes! I hate tomatoes! Ahhhh!!"
     ]
- 
-    def __init__(self, player, screen):
-        """ Create level 1. """
- 
-        # Call the parent constructor
-        Level.__init__(self, player)
+    name = 'level 1'
 
-        self.screen = screen
-	self.show_text(self._INTRO_TEXT)
+    _BACKGROUND_IMAGE = 'resources/park.gif'
+
+    def __init__(self, player):
+        """ Create level 1. """
+
+        # Call the parent constructor
+        Level.__init__(self, player, self._BACKGROUND_IMAGE)
+
+        self.player = player
+        self.show_text(self._INTRO_TEXT)
         self.level_limit = -1000
- 
+
         # Array with width, height, x, and y of platform
         level = [[210, 70, 500, 500],
                  [210, 70, 800, 400],
                  [210, 70, 1000, 500],
                  [210, 70, 1120, 280],
                  ]
- 
+
         # Go through the array above and add platforms
         for platform in level:
-            block = Platform(platform[0], platform[1])
+            block = Platform()
             block.rect.x = platform[2]
             block.rect.y = platform[3]
             block.player = self.player
             self.platform_list.add(block)
 
         self.enemy_list = pygame.sprite.Group()
-        enemy = Enemy()
-        enemy.rect.x = random.randrange(SCREEN_WIDTH)
-        enemy.rect.y = random.randrange(SCREEN_HEIGHT)
-        self.enemy_list.add(enemy)
+        self.make_n_random_enemies(2)

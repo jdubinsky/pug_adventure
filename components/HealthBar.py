@@ -1,7 +1,9 @@
 import pygame
 
+
 class HealthBar(pygame.sprite.Sprite):
     """ Represents player HP Bar """
+
     def __init__(self, player):
         pygame.sprite.Sprite.__init__(self)
         self.player = player
@@ -15,13 +17,14 @@ class HealthBar(pygame.sprite.Sprite):
         print self.player.hp
 
     def update(self):
-        self.percent = (self.player.hp / self.player.max_hp) 
+        self.percent = (self.player.hp / self.player.max_hp)
         print "percent=", self.percent
         if self.percent != self.old_percent:
-            pygame.draw.rect(self.image, BLACK, (1, 1, self.player.rect.width - 2, 5))
-            pygame.draw.rect(self.image, RED, (1, 1, int(self.player.rect.width * self.percent), 5), 0)
+            pygame.draw.rect(self.image, BLACK,
+                             (1, 1, self.player.rect.width - 2, 5))
+            pygame.draw.rect(self.image, RED, (1, 1, int(
+                self.player.rect.width * self.percent), 5), 0)
 
         self.old_percent = percent
         self.rect.centerx = self.player.rect.centerx
         self.rect.centery = self.player.rect.centery - self.player.rect.height / 2 - 10
-
